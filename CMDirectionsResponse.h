@@ -39,14 +39,14 @@
 @end
 
 typedef enum {
-    CMRouteSTepTurnTypeContinue = 1 << 1,
-    CMRouteSTepTurnTypeLeft = 1 << 2,
-    CMRouteSTepTurnTypeSlightLeft = 1 << 3,
-    CMRouteSTepTurnTypeSharpLeft = 1 << 4,
-    CMRouteSTepTurnTypeRight = 1 << 5,
-    CMRouteSTepTurnTypeSlightRight = 1 << 6,
-    CMRouteSTepTurnTypeSharpRight = 1 << 7,
-    CMRouteSTepTurnTypeUTurn = 1 << 8,
+    CMRouteSTepTurnTypeContinue = 1,
+    CMRouteSTepTurnTypeLeft = 2,
+    CMRouteSTepTurnTypeSlightLeft = 3,
+    CMRouteSTepTurnTypeSharpLeft = 4,
+    CMRouteSTepTurnTypeRight = 5,
+    CMRouteSTepTurnTypeSlightRight = 6,
+    CMRouteSTepTurnTypeSharpRight = 7,
+    CMRouteSTepTurnTypeUTurn = 8,
 } CMRouteStepTurnType;
 
 @interface CMRouteStep : NSObject
