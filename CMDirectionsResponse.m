@@ -123,7 +123,7 @@
 @property (nonatomic, readwrite, strong) NSString *distanceCaption;
 @property (nonatomic, readwrite, strong) NSString *earthDirection;
 @property (nonatomic, readwrite) CLLocationDirection azimute;
-@property (nonatomic, readwrite) CMRouteStepTurnType turnType;
+@property (nonatomic, readwrite) RouteStepTurnType turnType;
 @property (nonatomic, readwrite) CLLocationDirection turnAngle;
 
 - (instancetype)initWithArray:(NSArray *)array forPolyline:(MKPolyline *)polyline;
@@ -161,27 +161,28 @@
 
 # pragma mark - Turntype switch
 
-- (CMRouteStepTurnType)turnTypeForString:(NSString *)string {
+- (RouteStepTurnType)turnTypeForString:(NSString *)string {
     if ([string isEqualToString:@"C"]){
-        return CMRouteSTepTurnTypeContinue;
+        return RouteStepTurnTypeContinue;
     } else if ([string isEqualToString:@"TL"]){
-        return CMRouteSTepTurnTypeLeft;
+        return RouteStepTurnTypeLeft;
     } else if ([string isEqualToString:@"TSLL"]){
-        return CMRouteSTepTurnTypeSlightLeft;
+        return RouteStepTurnTypeSlightLeft;
     } else if ([string isEqualToString:@"TSHL"]){
-        return CMRouteSTepTurnTypeSharpLeft;
+        return RouteStepTurnTypeSharpLeft;
     } else if ([string isEqualToString:@"TR"]){
-        return CMRouteSTepTurnTypeRight;
+        return RouteStepTurnTypeRight;
     } else if ([string isEqualToString:@"TSLR"]){
-        return CMRouteSTepTurnTypeSlightRight;
+        return RouteStepTurnTypeSlightRight;
     } else if ([string isEqualToString:@"TSHR"]){
-        return CMRouteSTepTurnTypeSharpRight;
+        return RouteStepTurnTypeSharpRight;
     } else if ([string isEqualToString:@"TU"]){
-        return CMRouteSTepTurnTypeUTurn;
+        return RouteStepTurnTypeUTurn;
     } else  {
         return 0;
     }
 }
+
 
 # pragma mark - Coordinates from Polyline
 

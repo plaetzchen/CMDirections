@@ -10,8 +10,11 @@
 #import <MapKit/MapKit.h>
 
 #import "CMDirections.h"
+#import "DirectionsResponseFormatProtocol.h"
+#import "DirectionsResponseRouteFormatProtocol.h"
+#import "DirectionsResponseStepFormatProtocol.h"
 
-@interface CMDirectionsResponse : NSObject
+@interface CMDirectionsResponse : NSObject <DirectionsResponseFormatProtocol>
 
 // Source and destination may be filled with additional details compared to the request object.
 @property (nonatomic, readonly) MKMapItem *source;
@@ -23,7 +26,7 @@
 
 @end
 
-@interface CMRoute : NSObject
+@interface CMRoute : NSObject <DirectionsResponseRouteFormatProtocol>
 
 @property (nonatomic, readonly) NSString *name; // Combinded from start and end point
 
@@ -38,18 +41,8 @@
 
 @end
 
-typedef enum {
-    CMRouteSTepTurnTypeContinue = 1,
-    CMRouteSTepTurnTypeLeft = 2,
-    CMRouteSTepTurnTypeSlightLeft = 3,
-    CMRouteSTepTurnTypeSharpLeft = 4,
-    CMRouteSTepTurnTypeRight = 5,
-    CMRouteSTepTurnTypeSlightRight = 6,
-    CMRouteSTepTurnTypeSharpRight = 7,
-    CMRouteSTepTurnTypeUTurn = 8,
-} CMRouteStepTurnType;
 
-@interface CMRouteStep : NSObject
+@interface CMRouteStep : NSObject <DirectionsResponseStepFormatProtocol>
 
 @property (nonatomic, readonly) NSString *instruction; // localized written instructions
 
@@ -67,7 +60,7 @@ typedef enum {
 
 @property (nonatomic, readonly) CLLocationDirection azimute; //Azimute for this step in degress;
 
-@property (nonatomic, readonly) CMRouteStepTurnType turnType; //Type of the turn (left, right...), optional, absent for the first segment
+@property (nonatomic, readonly) RouteStepTurnType turnType; //Type of the turn (left, right...), optional, absent for the first segment
 
 @property (nonatomic, readonly) CLLocationDirection turnAngle; //The angle of the turn in degrees (0 for go straight, 90 for turn right, 270 for turn left, 180 for U-turn...)
 
